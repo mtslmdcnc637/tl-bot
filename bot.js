@@ -26,7 +26,7 @@ manager.addAnswer("pt", "SALUTATION", "Olá!!!!!!!!")
 
 async function accessSpreadsheet() {
     const auth = new google.auth.GoogleAuth({
-        keyFile: "./client_secret.json",
+        keyFile: "/etc/secrets/client_secret.json",
         scopes: "https://www.googleapis.com/auth/spreadsheets"
     })
 
