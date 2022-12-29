@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mtslmdcnc637/tl-bot#readme",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "google-spreadsheet": "^3.2.0",

@@ -1,7 +1,6 @@
 const express = require("express");
 const telegramBot = require("node-telegram-bot-api");
 const token = "5913577203:AAFZue-LPSZAtUCZ3i0KzqD9AzMkeqa5jOA";
-const bot = new telegramBot(token, { polling: true });
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 const { google } = require("googleapis");
 const credentials = require("./client_secret.json");
@@ -13,7 +12,13 @@ const app = express()
 app.use(express.json())
 require('dotenv').config()
 
-console.log(credentials)
+const Promise = require('bluebird');
+  Promise.config({
+    cancellation: true
+  });
+  
+  const bot = new telegramBot(token, {polling: true});
+
 console.log( "----------------------------------------------------------------------------")
 
 
@@ -101,7 +106,7 @@ async function responseMsg() {
 
                 console.log(msgText)
             } else {
-                bot.sendMessage("5258143401", msgText);
+                bot.sendMessage("5258143401", "mensagem desconhecida: "+msgText);
             }
 
         }
