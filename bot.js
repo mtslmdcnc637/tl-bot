@@ -118,7 +118,7 @@ async function responseMsg() {
 responseMsg() //chamada da função assincrona que executa o treino do bot
 
     res.send("o bot esta rodando")
-})
+}).then(() => { console.log("aui o bot roda") })
 app.listen(3000, () => {
     console.log("server running")
 }
