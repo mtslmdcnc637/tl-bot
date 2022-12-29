@@ -17,6 +17,12 @@ const token = process.env.token;
 console.log( "----------------------------------------------------------------------------")
 
 
+
+
+
+app.get('/', (req, res) => {
+
+
 // codigo no treinamento --------------------------------------------------
 const manager = new NlpManager({ languages: ["pt"], forceNER: true });
 // fim do codigo que instancia o treinemento ---------------------------
@@ -110,7 +116,7 @@ async function responseMsg() {
 
 } //termino da função assincrona que executa o treino do bot
 responseMsg() //chamada da função assincrona que executa o treino do bot
-app.get('/', (req, res) => {
+
     res.send("o bot esta rodando")
 })
 app.listen(3000, () => {
