@@ -11,11 +11,6 @@ const app = express()
 app.use(express.json())
 require('dotenv').config()
 
-const Promise = require('bluebird');
-Promise.config({
-    cancellation: true
-});
-
 const token = process.env.token;
   const bot = new telegramBot(token, {polling: true});
 
@@ -115,8 +110,13 @@ async function responseMsg() {
 
 } //termino da função assincrona que executa o treino do bot
 responseMsg() //chamada da função assincrona que executa o treino do bot
-
-
+app.get('/', (req, res) => {
+    res.send("o bot esta rodando")
+})
+app.listen(3000, () => {
+    console.log("server running")
+}
+)
 
 
 
