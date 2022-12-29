@@ -1,6 +1,5 @@
 const express = require("express");
 const telegramBot = require("node-telegram-bot-api");
-const token = "5913577203:AAFZue-LPSZAtUCZ3i0KzqD9AzMkeqa5jOA";
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 const { google } = require("googleapis");
 const credentials = require("./client_secret.json");
@@ -13,10 +12,11 @@ app.use(express.json())
 require('dotenv').config()
 
 const Promise = require('bluebird');
-  Promise.config({
+Promise.config({
     cancellation: true
-  });
-  
+});
+
+const token = process.env.token;
   const bot = new telegramBot(token, {polling: true});
 
 console.log( "----------------------------------------------------------------------------")
