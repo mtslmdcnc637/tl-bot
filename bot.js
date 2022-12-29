@@ -117,8 +117,7 @@ async function responseMsg() {
 } //termino da função assincrona que executa o treino do bot
 responseMsg() //chamada da função assincrona que executa o treino do bot
 
-    res.send("o bot esta rodando")
-
+   
 
 
     console.log("server running")
