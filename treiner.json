@@ -1,0 +1,32 @@
+{
+    "for_treiner_quest":[
+        {"quest": "oi", "category": "SALUTATION"},
+        {"quest": "ola", "category":"SALUTATION"},
+        {"quest":"tudo bem?", "category":"SALUTATION"},
+        { "quest": "opa", "category": "SALUTATION" },
+        { "quest": "Bom dia", "category": "SALUTATION" },
+        { "quest": "Boa tarde", "category": "SALUTATION" },
+        { "quest": "Boa noite", "category": "SALUTATION" },
+        { "quest": "Olá", "category": "SALUTATION" },
+        { "quest": "Como vai", "category": "SALUTATION" },
+        { "quest": "Tudo bem", "category": "SALUTATION" },
+        { "quest": "Como está o seu dia", "category": "SALUTATION" },
+        { "quest": "E aí", "category": "SALUTATION" },
+        { "quest": "O que há de novo", "category": "SALUTATION" },
+        { "quest": "Oi tudo bem", "category": "SALUTATION" },
+        { "quest": "Bom dia, como vai", "category": "SALUTATION" },
+        { "quest": "Boa tarde, tudo bem", "category": "SALUTATION" },
+        { "quest": "Boa noite, o que há de novo", "category": "SALUTATION" },
+        { "quest": "Olá, como está o seu dia", "category": "SALUTATION" },
+        { "quest": "E aí, tudo bem", "category": "SALUTATION" },
+        { "quest": "Oi, como está o seu dia", "category": "SALUTATION" },
+        { "quest": "Bom dia, o que há de novo", "category": "SALUTATION" },
+        { "quest": "Boa tarde, como vai", "category": "SALUTATION" },
+        { "quest": "Boa noite, como está o seu dia", "category": "SALUTATION" }
+    ],
+    "answer": [
+        { "category": "SALUTATION", "answer": "Oi! Bom dia!"},
+        { "category":"SALUTATION","answer": "Ola!!"},
+        { "category":"SALUTATION","answer":"Oi, tudo bem?"}
+    ]
+}

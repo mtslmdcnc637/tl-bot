@@ -1,97 +1,56 @@
 const express = require("express");
 const telegramBot = require("node-telegram-bot-api");
-const { GoogleSpreadsheet } = require("google-spreadsheet");
-const { google } = require("googleapis");
-const credentials = require("./client_secret.json");
-const docId = "1RJ6oS2MRL7JW5RGdc4pQCo3mOdxmD2WfQnNgc9cg8co";
-const { promisify } = require("util");
 const { NlpManager } = require("node-nlp");
 const { json } = require("express");
 const app = express()
 app.use(express.json())
 require('dotenv').config()
+const fs = require('fs')
+const db_treiner = fs.readFileSync('/etc/secrets/treiner.json') //pegua o arquivo json com os dados de treinamento
+const jsonDataForTreiner = JSON.parse(db_treiner) //transforma o arquivo json em um objeto javascript
+const dataForTreiner = jsonDataForTreiner.for_treiner_quest //pega o array de dados de treinamento
+const answer_collection = jsonDataForTreiner.answer //pega o array de respostas
 
+//para telegram -----------------------------------------------------------
 const token = process.env.token;
-  const bot = new telegramBot(token, {polling: true});
+const bot = new telegramBot(token, {polling: true});
+console.log( "------------------------------------ começo do código ----------------------------------------")
 
-console.log( "----------------------------------------------------------------------------")
+//rota para testar arquivo json -------------------------------------------
+app.get('/teste', (req, res) => {
+    res.send(dataForTreiner)
+})
 
+//rota para testar edição do arquivo json ----------------------------------
+app.get('put', (req, res) => {
+    // Adiciona um novo item ao array "for_treiner_quest"
+dataForTreiner.push({ "quest": "ola!!!", "category": "SALUTATION" });
 
+// Adiciona um novo item ao array "answer"
+answer_collection.push({ "category": "NOVA_CATEGORIA", "answer": "nova resposta" });
 
+// Atualiza o arquivo JSON com os dados atualizados
+fs.writeFileSync('/etc/secrets/treiner.json', JSON.stringify(jsonDataForTreiner));
 
+})
 
-app.listen(3000, () => {
+app.listen(3000, () => { // depois que o servidor for iniciado ele executa o codigo abaixo
 
 
 // codigo no treinamento --------------------------------------------------
 const manager = new NlpManager({ languages: ["pt"], forceNER: true });
 // fim do codigo que instancia o treinemento ---------------------------
 
-manager.addDocument("pt", "oi", "SALUTATION")
-manager.addAnswer("pt", "SALUTATION", "Olá!!!!!!!!")
 
-async function accessSpreadsheet() {
-    const auth = new google.auth.GoogleAuth({
-        keyFile: "/etc/secrets/client_secret.json",
-        scopes: "https://www.googleapis.com/auth/spreadsheets"
-    })
+dataForTreiner.forEach((element) => { //percorre o array de dados de treinamento
+    manager.addDocument("pt", element.quest, element.category); //adiciona a pergunta e a intenção
+});
 
-    const client = await auth.getClient();
-    const googleSheets = google.sheets({ version: "v4", auth: client });
-    return {
-        auth,
-        client,
-        googleSheets,
-        docId
-    }
-}
-async function getData() {
-    const { googleSheets, auth } = await accessSpreadsheet();
-
-    const getRows = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId: docId,
-        range: "quest"
-    })
-    return getRows;
-}
-const getRows = getData();
+answer_collection.forEach((element) => { //percorre o array de respostas
+    manager.addAnswer("pt", element.category, element.answer); //adiciona a intenção e a resposta
+});
 
 
-getRows.then((result) => {
-    const row = result.data.values
-    row.forEach(async (quest) => {
-        await manager.addDocument("pt", quest[0], quest[1])
-    })
-
-
-
-})
-
-async function getAnswer() {
-
-    const { googleSheets, auth } = await accessSpreadsheet();
-    const getAnswer = await googleSheets.spreadsheets.values.get({
-        auth,
-        spreadsheetId: docId,
-        range: "answer"
-    })
-    return getAnswer;
-}
-
-const answer = getAnswer();
-
-answer.then((result) => {
-    const row = result.data.values
-    console.log(row)
-    row.forEach(async (answer) => {
-        await manager.addAnswer("pt", answer[0], answer[1])
-    })
-
-
-
-})
-console.log('intermediario')
 async function responseMsg() {
     console.log("treino iniciado")
     await manager.train();
