@@ -53,12 +53,12 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
     //para telegram -----------------------------------------------------------
     const token = process.env.token;
     
-    const bot = new telegramBot(token, {polling: true});
+    const bot = new telegramBot(token, {polling: false});
     
         
         
         
-    await trainer()
+    await trainer().then(() => { //executa a função de treinamento do bot
     bot.on("message", async (msg) => {
  
     async function responseMSG(){
@@ -80,6 +80,7 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
         return true;
     }
     responseMSG()
+    })
     });
 //termino da função assincrona que executa o treino do bot
 }

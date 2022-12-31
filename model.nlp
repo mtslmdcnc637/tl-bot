@@ -46,6 +46,10 @@
           "ola": {
             "intent": "SALUTATION",
             "domain": "default"
+          },
+          "bem,oi,tud": {
+            "intent": "SALUTATION",
+            "domain": "default"
           }
         },
         "intentDict": {
@@ -67,6 +71,11 @@
             "domain": "default",
             "utterance": "Ola!",
             "intent": "SALUTATION"
+          },
+          {
+            "domain": "default",
+            "utterance": "Oi tudo bem ",
+            "intent": "SALUTATION"
           }
         ],
         "domains": {
@@ -85,7 +94,9 @@
             "features": {
               "test": 1,
               "oi": 1,
-              "ola": 1
+              "ola": 1,
+              "tud": 1,
+              "bem": 1
             },
             "intents": {
               "teste": 1,
@@ -97,7 +108,9 @@
               },
               "SALUTATION": {
                 "oi": 1,
-                "ola": 1
+                "ola": 1,
+                "tud": 1,
+                "bem": 1
               }
             },
             "featuresToIntent": {
@@ -108,6 +121,12 @@
                 "SALUTATION"
               ],
               "ola": [
+                "SALUTATION"
+              ],
+              "tud": [
+                "SALUTATION"
+              ],
+              "bem": [
                 "SALUTATION"
               ]
             },
@@ -126,7 +145,9 @@
               "features": [
                 "test",
                 "oi",
-                "ola"
+                "ola",
+                "tud",
+                "bem"
               ],
               "intents": [
                 "teste",
@@ -134,16 +155,20 @@
               ],
               "perceptrons": [
                 [
-                  11.309846878051758,
-                  -2.8059849739074707,
-                  -2.795351982116699,
-                  2.8545509672842146
+                  11.36944580078125,
+                  -2.8343396186828613,
+                  -2.823747396469116,
+                  -0.48912835121154785,
+                  -0.48912835121154785,
+                  2.855827330022279
                 ],
                 [
-                  -5.594907283782959,
-                  8.514640808105469,
-                  8.514322280883789,
-                  5.7167621354985885
+                  -5.592530250549316,
+                  8.381827354431152,
+                  8.590579986572266,
+                  0.14857131242752075,
+                  0.14857131242752075,
+                  5.686377620350918
                 ]
               ]
             }
@@ -164,6 +189,10 @@
       [
         "pt",
         "Ola!"
+      ],
+      [
+        "pt",
+        "Oi tudo bem "
       ]
     ]
   },
