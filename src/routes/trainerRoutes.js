@@ -41,7 +41,7 @@ router.post('/put', (req, res) => { //abre a rota de adição de dados ao banco 
 //rota para testar edição do arquivo json ----------------------------------
 router.get('/put', (req, res) => {
     //cria uma nova entrada no banco de dados
-    res.sendFile('/workspaces/tl-bot/src/views/insert.html')
+    res.render('insert.ejs')
 
 })
 

@@ -11,6 +11,8 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }));
 const router = express.Router();
 const trainerRoutes = require('./src/routes/trainerRoutes')
+app.set("view engine", "ejs");
+
 
 async function conectDb() {
     const user = process.env.db_user

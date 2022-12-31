@@ -42,6 +42,10 @@
           "oi": {
             "intent": "SALUTATION",
             "domain": "default"
+          },
+          "ola": {
+            "intent": "SALUTATION",
+            "domain": "default"
           }
         },
         "intentDict": {
@@ -57,6 +61,11 @@
           {
             "domain": "default",
             "utterance": "oi",
+            "intent": "SALUTATION"
+          },
+          {
+            "domain": "default",
+            "utterance": "Ola!",
             "intent": "SALUTATION"
           }
         ],
@@ -75,7 +84,8 @@
             },
             "features": {
               "test": 1,
-              "oi": 1
+              "oi": 1,
+              "ola": 1
             },
             "intents": {
               "teste": 1,
@@ -86,7 +96,8 @@
                 "test": 1
               },
               "SALUTATION": {
-                "oi": 1
+                "oi": 1,
+                "ola": 1
               }
             },
             "featuresToIntent": {
@@ -94,6 +105,9 @@
                 "teste"
               ],
               "oi": [
+                "SALUTATION"
+              ],
+              "ola": [
                 "SALUTATION"
               ]
             },
@@ -111,7 +125,8 @@
               },
               "features": [
                 "test",
-                "oi"
+                "oi",
+                "ola"
               ],
               "intents": [
                 "teste",
@@ -119,14 +134,16 @@
               ],
               "perceptrons": [
                 [
-                  10.62476634979248,
-                  -3.4869275093078613,
-                  3.569221390559939
+                  11.309846878051758,
+                  -2.8059849739074707,
+                  -2.795351982116699,
+                  2.8545509672842146
                 ],
                 [
-                  -3.4782614707946777,
-                  10.6246337890625,
-                  3.5730609599232563
+                  -5.594907283782959,
+                  8.514640808105469,
+                  8.514322280883789,
+                  5.7167621354985885
                 ]
               ]
             }
@@ -143,6 +160,10 @@
       [
         "pt",
         "oi"
+      ],
+      [
+        "pt",
+        "Ola!"
       ]
     ]
   },
