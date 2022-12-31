@@ -35,208 +35,28 @@
           "useStemDict": true
         },
         "stemDict": {
+          "test": {
+            "intent": "teste",
+            "domain": "default"
+          },
           "oi": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "ola": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "bem,tud": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "opa": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "bom,dia": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "boa,tard": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "boa,noit": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "com,vai": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "com,dia,esta,o,seu": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "ai,e": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "de,ha,nov,o,que": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "bem,oi,tud": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "bom,com,dia,vai": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "bem,boa,tard,tud": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "boa,de,ha,noit,nov,o,que": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "com,dia,esta,o,ola,seu": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "ai,bem,e,tud": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "com,dia,esta,o,oi,seu": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "bom,de,dia,ha,nov,o,que": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "boa,com,tard,vai": {
-            "intent": "SALUTATION",
-            "domain": "default"
-          },
-          "boa,com,dia,esta,noit,o,seu": {
             "intent": "SALUTATION",
             "domain": "default"
           }
         },
         "intentDict": {
+          "teste": "default",
           "SALUTATION": "default"
         },
         "sentences": [
           {
             "domain": "default",
+            "utterance": "teste",
+            "intent": "teste"
+          },
+          {
+            "domain": "default",
             "utterance": "oi",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "ola",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "tudo bem?",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "opa",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Bom dia",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Boa tarde",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Boa noite",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Olá",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Como vai",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Tudo bem",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Como está o seu dia",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "E aí",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "O que há de novo",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Oi tudo bem",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Bom dia, como vai",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Boa tarde, tudo bem",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Boa noite, o que há de novo",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Olá, como está o seu dia",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "E aí, tudo bem",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Oi, como está o seu dia",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Bom dia, o que há de novo",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Boa tarde, como vai",
-            "intent": "SALUTATION"
-          },
-          {
-            "domain": "default",
-            "utterance": "Boa noite, como está o seu dia",
             "intent": "SALUTATION"
           }
         ],
@@ -254,118 +74,26 @@
               "log": true
             },
             "features": {
-              "oi": 1,
-              "ola": 1,
-              "tud": 1,
-              "bem": 1,
-              "opa": 1,
-              "bom": 1,
-              "dia": 1,
-              "boa": 1,
-              "tard": 1,
-              "noit": 1,
-              "com": 1,
-              "vai": 1,
-              "esta": 1,
-              "o": 1,
-              "seu": 1,
-              "e": 1,
-              "ai": 1,
-              "que": 1,
-              "ha": 1,
-              "de": 1,
-              "nov": 1
+              "test": 1,
+              "oi": 1
             },
             "intents": {
+              "teste": 1,
               "SALUTATION": 1
             },
             "intentFeatures": {
+              "teste": {
+                "test": 1
+              },
               "SALUTATION": {
-                "oi": 1,
-                "ola": 1,
-                "tud": 1,
-                "bem": 1,
-                "opa": 1,
-                "bom": 1,
-                "dia": 1,
-                "boa": 1,
-                "tard": 1,
-                "noit": 1,
-                "com": 1,
-                "vai": 1,
-                "esta": 1,
-                "o": 1,
-                "seu": 1,
-                "e": 1,
-                "ai": 1,
-                "que": 1,
-                "ha": 1,
-                "de": 1,
-                "nov": 1
+                "oi": 1
               }
             },
             "featuresToIntent": {
+              "test": [
+                "teste"
+              ],
               "oi": [
-                "SALUTATION"
-              ],
-              "ola": [
-                "SALUTATION"
-              ],
-              "tud": [
-                "SALUTATION"
-              ],
-              "bem": [
-                "SALUTATION"
-              ],
-              "opa": [
-                "SALUTATION"
-              ],
-              "bom": [
-                "SALUTATION"
-              ],
-              "dia": [
-                "SALUTATION"
-              ],
-              "boa": [
-                "SALUTATION"
-              ],
-              "tard": [
-                "SALUTATION"
-              ],
-              "noit": [
-                "SALUTATION"
-              ],
-              "com": [
-                "SALUTATION"
-              ],
-              "vai": [
-                "SALUTATION"
-              ],
-              "esta": [
-                "SALUTATION"
-              ],
-              "o": [
-                "SALUTATION"
-              ],
-              "seu": [
-                "SALUTATION"
-              ],
-              "e": [
-                "SALUTATION"
-              ],
-              "ai": [
-                "SALUTATION"
-              ],
-              "que": [
-                "SALUTATION"
-              ],
-              "ha": [
-                "SALUTATION"
-              ],
-              "de": [
-                "SALUTATION"
-              ],
-              "nov": [
                 "SALUTATION"
               ]
             },
@@ -382,55 +110,23 @@
                 "log": true
               },
               "features": [
-                "oi",
-                "ola",
-                "tud",
-                "bem",
-                "opa",
-                "bom",
-                "dia",
-                "boa",
-                "tard",
-                "noit",
-                "com",
-                "vai",
-                "esta",
-                "o",
-                "seu",
-                "e",
-                "ai",
-                "que",
-                "ha",
-                "de",
-                "nov"
+                "test",
+                "oi"
               ],
               "intents": [
+                "teste",
                 "SALUTATION"
               ],
               "perceptrons": [
                 [
-                  0.19629254937171936,
-                  0.25371086597442627,
-                  0.06830360740423203,
-                  0.06830360740423203,
-                  0.4215729236602783,
-                  0.09984426945447922,
-                  0.07028040289878845,
-                  0.11646204441785812,
-                  0.04339345172047615,
-                  0.07513867318630219,
-                  0.056816987693309784,
-                  0.08647937327623367,
-                  -0.027231939136981964,
-                  -0.0003101564652752131,
-                  -0.027231939136981964,
-                  0.09864825755357742,
-                  0.09864825755357742,
-                  0.028867291286587715,
-                  0.028867291286587715,
-                  0.028867291286587715,
-                  0.028867291286587715,
-                  14.012565764027903
+                  10.62476634979248,
+                  -3.4869275093078613,
+                  3.569221390559939
+                ],
+                [
+                  -3.4782614707946777,
+                  10.6246337890625,
+                  3.5730609599232563
                 ]
               ]
             }
@@ -442,95 +138,11 @@
     "extraSentences": [
       [
         "pt",
+        "teste"
+      ],
+      [
+        "pt",
         "oi"
-      ],
-      [
-        "pt",
-        "ola"
-      ],
-      [
-        "pt",
-        "tudo bem?"
-      ],
-      [
-        "pt",
-        "opa"
-      ],
-      [
-        "pt",
-        "Bom dia"
-      ],
-      [
-        "pt",
-        "Boa tarde"
-      ],
-      [
-        "pt",
-        "Boa noite"
-      ],
-      [
-        "pt",
-        "Olá"
-      ],
-      [
-        "pt",
-        "Como vai"
-      ],
-      [
-        "pt",
-        "Tudo bem"
-      ],
-      [
-        "pt",
-        "Como está o seu dia"
-      ],
-      [
-        "pt",
-        "E aí"
-      ],
-      [
-        "pt",
-        "O que há de novo"
-      ],
-      [
-        "pt",
-        "Oi tudo bem"
-      ],
-      [
-        "pt",
-        "Bom dia, como vai"
-      ],
-      [
-        "pt",
-        "Boa tarde, tudo bem"
-      ],
-      [
-        "pt",
-        "Boa noite, o que há de novo"
-      ],
-      [
-        "pt",
-        "Olá, como está o seu dia"
-      ],
-      [
-        "pt",
-        "E aí, tudo bem"
-      ],
-      [
-        "pt",
-        "Oi, como está o seu dia"
-      ],
-      [
-        "pt",
-        "Bom dia, o que há de novo"
-      ],
-      [
-        "pt",
-        "Boa tarde, como vai"
-      ],
-      [
-        "pt",
-        "Boa noite, como está o seu dia"
       ]
     ]
   },
@@ -546,21 +158,7 @@
     "settings": {
       "tag": "nlg-manager"
     },
-    "responses": {
-      "pt": {
-        "SALUTATION": [
-          {
-            "answer": "Oi! Bom dia!"
-          },
-          {
-            "answer": "Ola!!"
-          },
-          {
-            "answer": "Oi, tudo bem?"
-          }
-        ]
-      }
-    }
+    "responses": {}
   },
   "actionManager": {
     "settings": {

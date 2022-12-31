@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir dados</title>
+    <style>
+        input{
+            display: block;
+            margin: 10px;
+            font-size: 2rem;
+            padding: 1rem;
+        }
+        select{
+            display: block;
+            margin: 10px;
+            font-size: 2rem;
+            padding: 1rem;
+        }
+        button{
+            display: block;
+            margin: 10px;
+            font-size: 2rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Formulário de inserção de dados -->
+    <form action="/put" method="POST">
+        <input type="text" name="text" id="text" placeholder="Insira aqui o texto" required>
+        <input type="text" name="category" id="category" placeholder="Insira aqui o tipo" required>
+        <select name="type" required>
+            <option value="quest" selected>Quest</option>
+            <option value="answer">Answer</option>
+          </select>
+          
+        <input type="submit" value="Inserir">
+        
+</body>
+</html>

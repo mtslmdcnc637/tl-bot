@@ -5,57 +5,63 @@ const { json } = require("express");
 const app = express()
 app.use(express.json())
 require('dotenv').config()
-const fs = require('fs')
-const db_treiner = fs.readFileSync('/etc/secrets/treiner.json') //pegua o arquivo json com os dados de treinamento
-const jsonDataForTreiner = JSON.parse(db_treiner) //transforma o arquivo json em um objeto javascript
-const dataForTreiner = jsonDataForTreiner.for_treiner_quest //pega o array de dados de treinamento
-const answer_collection = jsonDataForTreiner.answer //pega o array de respostas
+const mongoose = require('mongoose');
+const trainerModel = require('./models/trainerModel')
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: true }));
+const router = express.Router();
+const trainerRoutes = require('./src/routes/trainerRoutes')
+
+async function conectDb() {
+    const user = process.env.db_user
+    const password = process.env.db_password
+    try {
+        mongoose.set('strictQuery', true);
+        await mongoose.connect(`mongodb+srv://${user}:${password}@chatbolt.tj78mfj.mongodb.net/?retryWrites=true&w=majority`)
+        console.log("conectado ao banco de dados")
+    }catch (error) {
+        console.log("erro ao conectar ao banco de dados: "+error)
+    }
+}
+conectDb()
+
+
+async function trainer(){ //função que treina o bot com os dados do banco de dados
+    const manager = new NlpManager({ languages: ["pt"], forceNER: true });
+    const dataForTreinerQuest = await trainerModel.find({type: "quest"})
+    const dataForTreinerAnswer = await trainerModel.find({type: "answer"})
+    dataForTreinerQuest.forEach((element) => { //percorre o array de dados de treinamento
+        manager.addDocument("pt", element.quest, element.category); //adiciona a pergunta e a intenção
+    });
+    dataForTreinerAnswer.forEach((element) => { //percorre o array de respostas
+        manager.addAnswer("pt", element.category, element.answer); //adiciona a intenção e a resposta
+    });
+    await manager.train();
+    manager.save();
+    console.log(dataForTreinerQuest)
+    console.log(" ----------------------------- treinamento concluido -----------------------------")
+}
+
+app.use('/', trainerRoutes)
+
+
+
 
 //para telegram -----------------------------------------------------------
 const token = process.env.token;
 const bot = new telegramBot(token, {polling: true});
-console.log( "------------------------------------ começo do código ----------------------------------------")
 
-//rota para testar arquivo json -------------------------------------------
-app.get('/teste', (req, res) => {
-    res.send(dataForTreiner)
-})
 
-//rota para testar edição do arquivo json ----------------------------------
-app.get('put', (req, res) => {
-    // Adiciona um novo item ao array "for_treiner_quest"
-dataForTreiner.push({ "quest": "ola!!!", "category": "SALUTATION" });
 
-// Adiciona um novo item ao array "answer"
-answer_collection.push({ "category": "NOVA_CATEGORIA", "answer": "nova resposta" });
 
-// Atualiza o arquivo JSON com os dados atualizados
-fs.writeFileSync('/etc/secrets/treiner.json', JSON.stringify(jsonDataForTreiner));
 
-})
+
+
 
 app.listen(3000, () => { // depois que o servidor for iniciado ele executa o codigo abaixo
 
-
-// codigo no treinamento --------------------------------------------------
-const manager = new NlpManager({ languages: ["pt"], forceNER: true });
-// fim do codigo que instancia o treinemento ---------------------------
-
-
-dataForTreiner.forEach((element) => { //percorre o array de dados de treinamento
-    manager.addDocument("pt", element.quest, element.category); //adiciona a pergunta e a intenção
-});
-
-answer_collection.forEach((element) => { //percorre o array de respostas
-    manager.addAnswer("pt", element.category, element.answer); //adiciona a intenção e a resposta
-});
-
-
 async function responseMsg() {
-    console.log("treino iniciado")
-    await manager.train();
-    manager.save();
-    console.log("treinamento concluido")
+    await trainer()
     bot.on("message", async msg => {
         if (msg.from.is_bot === false) {
 
