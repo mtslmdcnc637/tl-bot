@@ -32,15 +32,16 @@ async function trainer(){ //função que treina o bot com os dados do banco de d
     const manager = new NlpManager({ languages: ["pt"], forceNER: true });
     const dataForTreinerQuest = await trainerModel.find({type: "quest"})
     const dataForTreinerAnswer = await trainerModel.find({type: "answer"})
+
     dataForTreinerQuest.forEach((element) => { //percorre o array de dados de treinamento
         manager.addDocument("pt", element.quest, element.category); //adiciona a pergunta e a intenção
     });
     dataForTreinerAnswer.forEach((element) => { //percorre o array de respostas
         manager.addAnswer("pt", element.category, element.answer); //adiciona a intenção e a resposta
     });
+
     await manager.train();
     manager.save();
-    console.log(dataForTreinerQuest)
     console.log(" ----------------------------- treinamento concluido -----------------------------")
 }
 
@@ -51,9 +52,7 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
    
     //para telegram -----------------------------------------------------------
     const token = process.env.token;
-    if(bot.isPolling() === true){
-        bot.stopPolling()
-    }
+    
     const bot = new telegramBot(token, {polling: true});
     
         
@@ -83,10 +82,6 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
     responseMSG()
     });
 //termino da função assincrona que executa o treino do bot
-
-   
-
-    console.log("server running")
 }
 )
 
