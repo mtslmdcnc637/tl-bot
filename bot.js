@@ -52,7 +52,15 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
     //para telegram -----------------------------------------------------------
     const token = process.env.token;
     const bot = new telegramBot(token, {polling: true});
-    
+    if(bot.isPolling()) {
+        await bot.stopPolling();
+        }
+        
+        await bot.startPolling();
+        
+        
+        
+        
  
     async function responseMSG(){
 
@@ -79,7 +87,7 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
 
    
 
-
+await bot.stopPolling();
     console.log("server running")
 }
 )
