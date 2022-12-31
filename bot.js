@@ -56,11 +56,11 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
         
         
         
+    await trainer()
+    bot.on("message", async (msg) => {
  
     async function responseMSG(){
 
-    await trainer()
-    bot.on("message", async (msg) => {
         if (msg.from.is_bot === false) {
 
             const msgText = msg.text.toLowerCase()
@@ -75,9 +75,9 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
 
         }
         return true;
-    });
     }
     responseMSG()
+    });
 //termino da função assincrona que executa o treino do bot
 
    
