@@ -65,13 +65,14 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
 
             const msgText = msg.text.toLowerCase()
             const response = await manager.process("pt", msgText);
-
+            response.then((response) => {
             if (response.answer && response.score > 0.8) {
                 bot.sendMessage(msg.chat.id, response.answer);
                 console.log(msgText)
             } else {
                 bot.sendMessage("5258143401", "mensagem desconhecida: "+msgText);
             }
+            });
 
         }
         return true;
