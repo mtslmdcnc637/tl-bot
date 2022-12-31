@@ -46,32 +46,25 @@ async function trainer(){ //função que treina o bot com os dados do banco de d
 
 app.use('/', trainerRoutes)
 
+app.listen(3000, async () => { // depois que o servidor for iniciado ele executa o codigo abaixo
+   
+   
+    //para telegram -----------------------------------------------------------
+    const token = process.env.token;
+    if(!bot){const bot = new telegramBot(token, {polling: true});}
+    
+ 
+    
 
-
-
-//para telegram -----------------------------------------------------------
-const token = process.env.token;
-const bot = new telegramBot(token, {polling: true});
-
-
-
-
-
-
-
-
-app.listen(3000, () => { // depois que o servidor for iniciado ele executa o codigo abaixo
-
-async function responseMsg() {
     await trainer()
     bot.on("message", async msg => {
         if (msg.from.is_bot === false) {
 
             const msgText = msg.text.toLowerCase()
             const response = await manager.process("pt", msgText);
+
             if (response.answer && response.score > 0.8) {
                 bot.sendMessage(msg.chat.id, response.answer);
-
                 console.log(msgText)
             } else {
                 bot.sendMessage("5258143401", "mensagem desconhecida: "+msgText);
@@ -81,8 +74,7 @@ async function responseMsg() {
         return true;
     });
 
-} //termino da função assincrona que executa o treino do bot
-responseMsg() //chamada da função assincrona que executa o treino do bot
+//termino da função assincrona que executa o treino do bot
 
    
 
