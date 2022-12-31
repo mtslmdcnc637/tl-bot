@@ -52,12 +52,7 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
     //para telegram -----------------------------------------------------------
     const token = process.env.token;
     const bot = new telegramBot(token, {polling: true});
-    if(bot.isPolling()) {
-        await bot.stopPolling();
-        }
-        
-        await bot.startPolling();
-        
+    
         
         
         
@@ -65,7 +60,7 @@ app.listen(3000, async () => { // depois que o servidor for iniciado ele executa
     async function responseMSG(){
 
     await trainer()
-    bot.on("message", async msg => {
+    bot.on("message", async (msg) => {
         if (msg.from.is_bot === false) {
 
             const msgText = msg.text.toLowerCase()
